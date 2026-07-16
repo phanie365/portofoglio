@@ -10,41 +10,81 @@
 </head>
 <body>
   <header class="nav">
-    <div class="nav__brand">Stephanie<span>.</span>Poaty</div>
+    <div class="nav__brand"><span class="nav__gem" aria-hidden="true"></span>Stephanie<span>.</span>Poaty</div>
     <nav class="nav__links">
       <a href="#about">À propos</a>
       <a href="#skills">Compétences</a>
       <a href="#projects">Projets</a>
-      <a href="#contact">Contact</a>
     </nav>
+    <a href="#contact" class="btn btn--primary btn--nav">Contact me</a>
     <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu">☰</button>
   </header>
 
   <main>
     <section class="hero">
-      <p class="hero__eyebrow">Bonjour, je suis</p>
-      <h1 class="hero__name">Stephanie Poaty</h1>
-      <h2 class="hero__title">Data Engineer &amp; Data Analyst</h2>
-      <p class="hero__tagline">
-        Je transforme des données brutes en informations exploitables :
-        pipelines fiables, analyses claires, décisions éclairées.
-      </p>
-      <div class="hero__cta">
-        <a href="#projects" class="btn btn--primary">Voir mes projets</a>
-        <a href="#contact" class="btn btn--ghost">Me contacter</a>
+      <div class="hero__decor" aria-hidden="true"></div>
+      <div class="hero__grid">
+        <div class="hero__left">
+          <p class="hero__greeting">Hello,</p>
+          <p class="hero__tagline">
+            Je transforme des données brutes en informations exploitables :
+            pipelines fiables, analyses claires, décisions éclairées.
+          </p>
+          <ul class="hero__roles" id="heroRoles">
+            <li class="is-active">Data Engineer</li>
+            <li>Data Analyst</li>
+            <li>Analytics</li>
+          </ul>
+        </div>
+
+        <div class="hero__photo-wrap">
+          <div class="hero__photo">
+            <img
+              src="assets/img/profile.jpg"
+              alt="Stephanie Poaty"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="hero__photo-fallback">SP</div>
+          </div>
+          <div class="hero__badge hero__badge--linkedin" title="LinkedIn">in</div>
+          <div class="hero__badge hero__badge--github" title="GitHub">GH</div>
+          <div class="hero__badge hero__badge--mail" title="Email">@</div>
+        </div>
+
+        <div class="hero__right">
+          <h1 class="hero__name">
+            I am<br />
+            <span>Stephanie Poaty</span>
+          </h1>
+          <a href="#contact" class="btn btn--primary">Contact me</a>
+        </div>
       </div>
     </section>
 
     <section id="about" class="section">
-      <h2 class="section__title">À propos</h2>
-      <p class="section__text">
-        <!-- TODO: Stephanie, remplace ce paragraphe par ta propre présentation
-             (parcours, formation, ce qui te motive dans la data). -->
-        Passionnée par la donnée, je conçois des pipelines ETL/ELT robustes et des
-        analyses qui aident les équipes à prendre de meilleures décisions.
-        J'aime travailler à l'intersection de l'ingénierie logicielle et de
-        l'analyse de données.
-      </p>
+      <h2 class="section__title">About Me</h2>
+      <div class="about__card">
+        <div class="about__text">
+          <p>
+            <!-- TODO: Stephanie, remplace ce paragraphe par ta propre présentation
+                 (parcours, formation, ce qui te motive dans la data). -->
+            Passionnée par la donnée, je conçois des pipelines ETL/ELT robustes et des
+            analyses qui aident les équipes à prendre de meilleures décisions.
+            J'aime travailler à l'intersection de l'ingénierie logicielle et de
+            l'analyse de données.
+          </p>
+        </div>
+        <div class="about__features">
+          <div class="about__feature">
+            <div class="about__feature-icon">🔧</div>
+            <p>Construire des pipelines fiables avec Airflow, dbt &amp; Spark</p>
+          </div>
+          <div class="about__feature">
+            <div class="about__feature-icon">📊</div>
+            <p>Transformer la donnée en décision avec Python, SQL &amp; Power BI</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="skills" class="section">
@@ -53,48 +93,72 @@
         <div class="skill-card">
           <h3>Langages</h3>
           <p>Python, SQL</p>
+          <span class="skill-card__level skill-card__level--strong">Maîtrisé</span>
         </div>
         <div class="skill-card">
           <h3>Data Engineering</h3>
           <p>Airflow, dbt, Spark, ETL/ELT</p>
+          <span class="skill-card__level skill-card__level--strong">Maîtrisé</span>
         </div>
         <div class="skill-card">
           <h3>Data &amp; Analyse</h3>
           <p>Pandas, Power BI / Tableau, statistiques</p>
+          <span class="skill-card__level skill-card__level--strong">Maîtrisé</span>
         </div>
         <div class="skill-card">
           <h3>Cloud &amp; Outils</h3>
           <p>AWS / Azure / GCP, Docker, Git</p>
+          <span class="skill-card__level skill-card__level--light">Notions</span>
         </div>
       </div>
     </section>
 
     <section id="projects" class="section">
-      <h2 class="section__title">Projets</h2>
-      <div class="projects__grid">
-        <article class="project-card">
-          <h3>Nom du projet 1</h3>
-          <p>Courte description du projet : problème résolu, données utilisées, résultat obtenu.</p>
-          <div class="project-card__tags">
-            <span>Python</span><span>SQL</span><span>Airflow</span>
+      <h2 class="section__title">Success Stories</h2>
+      <div class="timeline">
+        <article class="timeline__item">
+          <div class="timeline__thumb" aria-hidden="true"></div>
+          <div class="timeline__content">
+            <div class="timeline__meta">
+              <div class="timeline__tags">
+                <span>Python</span><span>SQL</span><span>Airflow</span>
+              </div>
+              <span class="timeline__date">2025 – Présent</span>
+            </div>
+            <h3>Nom du projet 1</h3>
+            <p>Problème résolu, données utilisées, résultat obtenu (idéalement chiffré).</p>
+            <a href="#" class="timeline__link">Voir le projet →</a>
           </div>
-          <a href="#" class="project-card__link">Voir le projet →</a>
         </article>
-        <article class="project-card">
-          <h3>Nom du projet 2</h3>
-          <p>Courte description du projet : problème résolu, données utilisées, résultat obtenu.</p>
-          <div class="project-card__tags">
-            <span>dbt</span><span>Spark</span><span>Cloud</span>
+
+        <article class="timeline__item">
+          <div class="timeline__thumb" aria-hidden="true"></div>
+          <div class="timeline__content">
+            <div class="timeline__meta">
+              <div class="timeline__tags">
+                <span>dbt</span><span>Spark</span><span>Cloud</span>
+              </div>
+              <span class="timeline__date">2024</span>
+            </div>
+            <h3>Nom du projet 2</h3>
+            <p>Problème résolu, données utilisées, résultat obtenu (idéalement chiffré).</p>
+            <a href="#" class="timeline__link">Voir le projet →</a>
           </div>
-          <a href="#" class="project-card__link">Voir le projet →</a>
         </article>
-        <article class="project-card">
-          <h3>Nom du projet 3</h3>
-          <p>Courte description du projet : problème résolu, données utilisées, résultat obtenu.</p>
-          <div class="project-card__tags">
-            <span>Power BI</span><span>Analyse</span>
+
+        <article class="timeline__item">
+          <div class="timeline__thumb" aria-hidden="true"></div>
+          <div class="timeline__content">
+            <div class="timeline__meta">
+              <div class="timeline__tags">
+                <span>Power BI</span><span>Analyse</span>
+              </div>
+              <span class="timeline__date">2023</span>
+            </div>
+            <h3>Nom du projet 3</h3>
+            <p>Problème résolu, données utilisées, résultat obtenu (idéalement chiffré).</p>
+            <a href="#" class="timeline__link">Voir le projet →</a>
           </div>
-          <a href="#" class="project-card__link">Voir le projet →</a>
         </article>
       </div>
     </section>
