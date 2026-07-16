@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stephanie Poaty — Data Engineer / Analyst</title>
+  <meta name="description" content="Portfolio de Stephanie Poaty, Data Engineer / Data Analyst." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__brand">Stephanie<span>.</span>Poaty</div>
+    <nav class="nav__links">
+      <a href="#about">À propos</a>
+      <a href="#skills">Compétences</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu">☰</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero__eyebrow">Bonjour, je suis</p>
+      <h1 class="hero__name">Stephanie Poaty</h1>
+      <h2 class="hero__title">Data Engineer &amp; Data Analyst</h2>
+      <p class="hero__tagline">
+        Je transforme des données brutes en informations exploitables :
+        pipelines fiables, analyses claires, décisions éclairées.
+      </p>
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn--ghost">Me contacter</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section__title">À propos</h2>
+      <p class="section__text">
+        <!-- TODO: Stephanie, remplace ce paragraphe par ta propre présentation
+             (parcours, formation, ce qui te motive dans la data). -->
+        Passionnée par la donnée, je conçois des pipelines ETL/ELT robustes et des
+        analyses qui aident les équipes à prendre de meilleures décisions.
+        J'aime travailler à l'intersection de l'ingénierie logicielle et de
+        l'analyse de données.
+      </p>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="section__title">Compétences</h2>
+      <div class="skills__grid">
+        <div class="skill-card">
+          <h3>Langages</h3>
+          <p>Python, SQL</p>
+        </div>
+        <div class="skill-card">
+          <h3>Data Engineering</h3>
+          <p>Airflow, dbt, Spark, ETL/ELT</p>
+        </div>
+        <div class="skill-card">
+          <h3>Data &amp; Analyse</h3>
+          <p>Pandas, Power BI / Tableau, statistiques</p>
+        </div>
+        <div class="skill-card">
+          <h3>Cloud &amp; Outils</h3>
+          <p>AWS / Azure / GCP, Docker, Git</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="section__title">Projets</h2>
+      <div class="projects__grid">
+        <article class="project-card">
+          <h3>Nom du projet 1</h3>
+          <p>Courte description du projet : problème résolu, données utilisées, résultat obtenu.</p>
+          <div class="project-card__tags">
+            <span>Python</span><span>SQL</span><span>Airflow</span>
+          </div>
+          <a href="#" class="project-card__link">Voir le projet →</a>
+        </article>
+        <article class="project-card">
+          <h3>Nom du projet 2</h3>
+          <p>Courte description du projet : problème résolu, données utilisées, résultat obtenu.</p>
+          <div class="project-card__tags">
+            <span>dbt</span><span>Spark</span><span>Cloud</span>
+          </div>
+          <a href="#" class="project-card__link">Voir le projet →</a>
+        </article>
+        <article class="project-card">
+          <h3>Nom du projet 3</h3>
+          <p>Courte description du projet : problème résolu, données utilisées, résultat obtenu.</p>
+          <div class="project-card__tags">
+            <span>Power BI</span><span>Analyse</span>
+          </div>
+          <a href="#" class="project-card__link">Voir le projet →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section section--contact">
+      <h2 class="section__title">Contact</h2>
+      <p class="section__text">Une question, une opportunité ? N'hésite pas à me contacter.</p>
+      <div class="contact__links">
+        <a href="mailto:ton.email@example.com">Email</a>
+        <a href="https://github.com/phanie365" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Stephanie Poaty. Tous droits réservés.</p>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
