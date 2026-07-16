@@ -501,23 +501,46 @@ a {
 /* Contact */
 .contact__links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
-.contact__links a {
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   border: 1px solid var(--border);
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius);
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
   color: var(--text);
   background: var(--surface);
-  transition: border-color 0.15s, color 0.15s;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, border-color 0.15s, color 0.15s;
 }
 
-.contact__links a:hover {
+.contact__link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.contact__link:hover {
+  transform: translateY(-2px);
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.contact__link--primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 20px -8px rgba(124, 58, 237, 0.5);
+}
+
+.contact__link--primary:hover {
+  color: #fff;
 }
 
 /* Footer */
