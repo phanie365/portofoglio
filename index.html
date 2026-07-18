@@ -141,22 +141,39 @@
     <section id="projects" class="section">
       <h2 class="section__title">Success Stories</h2>
       <div class="timeline">
-        <article class="timeline__item">
+        <article
+          class="timeline__item"
+          data-title="Pharma Supply Chain Analytics"
+          data-date="2025 – En cours"
+          data-tags="Python,Databricks,PySpark,Architecture Médaillon,Power BI"
+          data-repo="https://github.com/phanie365/pharma-supply-chain-analytics"
+          data-description="Pipeline de données de bout en bout pour une entreprise pharmaceutique fictive. Génération et nettoyage de données brutes en local, puis ingestion sur Databricks selon une architecture médaillon : couche Bronze (données brutes), Silver (nettoyage et transformation) et Gold (données prêtes pour l'analyse). Connexion à Power BI pour la restitution — le dashboard est en cours de finalisation."
+        >
           <div class="timeline__thumb" aria-hidden="true"></div>
           <div class="timeline__content">
             <div class="timeline__meta">
               <div class="timeline__tags">
-                <span>Python</span><span>SQL</span><span>Airflow</span>
+                <span>Python</span><span>Databricks</span><span>PySpark</span><span>Power BI</span>
               </div>
-              <span class="timeline__date">2025 – Présent</span>
+              <span class="timeline__date">2025 – En cours</span>
             </div>
-            <h3>Nom du projet 1</h3>
-            <p>Problème résolu, données utilisées, résultat obtenu (idéalement chiffré).</p>
-            <a href="#" class="timeline__link">Voir le projet →</a>
+            <h3>Pharma Supply Chain Analytics</h3>
+            <p>
+              Pipeline de données de bout en bout pour une entreprise pharmaceutique fictive : ingestion
+              et architecture médaillon (Bronze/Silver/Gold) sur Databricks, restitution via Power BI.
+            </p>
+            <button type="button" class="timeline__link">Voir les détails →</button>
           </div>
         </article>
 
-        <article class="timeline__item">
+        <article
+          class="timeline__item"
+          data-title="Nom du projet 2"
+          data-date="2024"
+          data-tags="dbt,Spark,Cloud"
+          data-repo="#"
+          data-description="Problème résolu, données utilisées, résultat obtenu (idéalement chiffré)."
+        >
           <div class="timeline__thumb" aria-hidden="true"></div>
           <div class="timeline__content">
             <div class="timeline__meta">
@@ -167,11 +184,18 @@
             </div>
             <h3>Nom du projet 2</h3>
             <p>Problème résolu, données utilisées, résultat obtenu (idéalement chiffré).</p>
-            <a href="#" class="timeline__link">Voir le projet →</a>
+            <button type="button" class="timeline__link">Voir les détails →</button>
           </div>
         </article>
 
-        <article class="timeline__item">
+        <article
+          class="timeline__item"
+          data-title="Nom du projet 3"
+          data-date="2023"
+          data-tags="Power BI,Analyse"
+          data-repo="#"
+          data-description="Problème résolu, données utilisées, résultat obtenu (idéalement chiffré)."
+        >
           <div class="timeline__thumb" aria-hidden="true"></div>
           <div class="timeline__content">
             <div class="timeline__meta">
@@ -182,11 +206,23 @@
             </div>
             <h3>Nom du projet 3</h3>
             <p>Problème résolu, données utilisées, résultat obtenu (idéalement chiffré).</p>
-            <a href="#" class="timeline__link">Voir le projet →</a>
+            <button type="button" class="timeline__link">Voir les détails →</button>
           </div>
         </article>
       </div>
     </section>
+
+    <div class="modal" id="projectModal" hidden>
+      <div class="modal__backdrop" data-modal-close></div>
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button type="button" class="modal__close" data-modal-close aria-label="Fermer">&times;</button>
+        <div class="modal__tags" id="modalTags"></div>
+        <h3 id="modalTitle"></h3>
+        <p class="modal__date" id="modalDate"></p>
+        <p id="modalDescription"></p>
+        <a id="modalRepo" href="#" target="_blank" rel="noopener" class="btn btn--primary">Voir le repo GitHub →</a>
+      </div>
+    </div>
 
     <section id="contact" class="section section--contact">
       <h2 class="section__title">Contact</h2>
