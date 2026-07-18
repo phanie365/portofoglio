@@ -280,6 +280,13 @@ a {
   color: transparent;
 }
 
+.hero__cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .btn {
   padding: 0.7rem 1.4rem;
   border-radius: var(--radius);
@@ -570,6 +577,10 @@ a {
   .hero__right {
     align-items: center;
     text-align: center;
+  }
+
+  .hero__cta {
+    justify-content: center;
   }
 
   .about__card {
