@@ -420,9 +420,8 @@ a {
 }
 
 .skill-card__level--medium {
-  background: transparent;
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  background: rgba(244, 114, 182, 0.14);
+  color: var(--accent-2);
 }
 
 .skill-card__level--light {
