@@ -437,13 +437,10 @@ a {
 }
 
 .timeline__item {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 1.5rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.2rem;
+  padding: 1.2rem 1.5rem;
   box-shadow: var(--shadow);
   transition: transform 0.15s, border-color 0.15s;
 }
@@ -451,12 +448,6 @@ a {
 .timeline__item:hover {
   transform: translateY(-3px);
   border-color: var(--accent);
-}
-
-.timeline__thumb {
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent-soft), rgba(244, 114, 182, 0.12));
-  min-height: 100px;
 }
 
 .timeline__content h3 {
@@ -685,13 +676,6 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .timeline__item {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline__thumb {
-    min-height: 80px;
-  }
 }
 
 @media (max-width: 640px) {
