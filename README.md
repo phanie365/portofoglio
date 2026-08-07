@@ -1,4 +1,4 @@
-# Portfolio — Stephanie Poaty
+# Portfolio Stephanie Poaty
 
 Site portfolio personnel de Stephanie Poaty, Data Engineer / Data Analyst.
 
