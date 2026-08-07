@@ -419,6 +419,12 @@ a {
   color: var(--accent);
 }
 
+.skill-card__level--medium {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
 .skill-card__level--light {
   background: var(--bg-alt);
   color: var(--text-muted);
