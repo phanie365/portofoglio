@@ -52,12 +52,12 @@ window.PROJECTS = [
           title: "Contexte : un reporting manuel, chronophage et fragmenté",
           text: "Le département cybersécurité s'appuyait sur plusieurs outils spécialisés, dont CyberWatch et SentinelOne. Les données étaient exportées manuellement (Excel, PDF, XML), consolidées dans Excel, puis utilisées pour préparer des présentations PowerPoint. Ce processus mobilisait du temps, exposait à des erreurs de manipulation et rendait difficile la traçabilité ainsi qu'une vision transversale des activités.",
           sources: [
-            { icon: "shield", name: "CyberWatch", note: "Vulnérabilités" },
-            { icon: "monitor", name: "SentinelOne", note: "Menaces et parc" },
+            { logo: "assets/img/logos/cyberwatch.png", name: "CyberWatch", note: "Vulnérabilités" },
+            { logo: "assets/img/logos/sentinelone.png", name: "SentinelOne", note: "Menaces et parc" },
           ],
           steps: [
             { icon: "file", name: "Exports manuels", note: "Excel, PDF, XML" },
-            { icon: "grid", name: "Consolidation", note: "et calculs dans Excel" },
+            { logo: "assets/img/logos/excel.svg", name: "Consolidation", note: "et calculs dans Excel" },
             { icon: "slides", name: "Préparation des supports", note: "PowerPoint" },
           ],
         },
@@ -77,12 +77,12 @@ window.PROJECTS = [
           text: "La première version opérationnelle portait sur deux sources : CyberWatch et SentinelOne. L'extension à d'autres outils constituait un objectif de conception.",
           groups: [
             {
-              icon: "shield",
+              logo: "assets/img/logos/cyberwatch.png",
               name: "CyberWatch",
               items: ["Nombre total de vulnérabilités", "Vulnérabilités corrigées", "Taux de correction", "Vulnérabilités prioritaires", "Nombre d'actifs (assets)"],
             },
             {
-              icon: "monitor",
+              logo: "assets/img/logos/sentinelone.png",
               name: "SentinelOne",
               items: ["Taille / suivi du parc", "Nombre de vrais positifs", "Suivi des seuils S1A (protection du parc)", "Suivi des seuils S1B (fiabilité des vrais positifs)"],
             },
@@ -103,8 +103,8 @@ window.PROJECTS = [
               status: "live",
               statusLabel: "En production",
               sources: [
-                { icon: "shield", name: "CyberWatch" },
-                { icon: "monitor", name: "SentinelOne" },
+                { logo: "assets/img/logos/cyberwatch.png", name: "CyberWatch" },
+                { logo: "assets/img/logos/sentinelone.png", name: "SentinelOne" },
               ],
               steps: [
                 { logo: "assets/img/logos/semarchy.svg", name: "Semarchy xDI", lines: ["Extraction", "Transformations", "Orchestration"] },
@@ -117,8 +117,8 @@ window.PROJECTS = [
               status: "pending",
               statusLabel: "Non en production",
               sources: [
-                { icon: "shield", name: "CyberWatch" },
-                { icon: "monitor", name: "SentinelOne" },
+                { logo: "assets/img/logos/cyberwatch.png", name: "CyberWatch" },
+                { logo: "assets/img/logos/sentinelone.png", name: "SentinelOne" },
               ],
               steps: [
                 { logo: "assets/img/logos/informatica.svg", name: "Informatica IICS", lines: ["Mappings d'ingestion", "Mapping Tasks", "Taskflows"] },
@@ -171,8 +171,8 @@ window.PROJECTS = [
           type: "logos",
           title: "Technologies utilisées",
           items: [
-            { icon: "shield", name: "CyberWatch" },
-            { icon: "monitor", name: "SentinelOne" },
+            { logo: "assets/img/logos/cyberwatch.png", name: "CyberWatch" },
+            { logo: "assets/img/logos/sentinelone.png", name: "SentinelOne" },
             { logo: "assets/img/logos/semarchy.svg", name: "Semarchy xDI" },
             { logo: "assets/img/logos/sqlserver.svg", name: "SQL Server" },
             { logo: "assets/img/logos/powerbi.svg", name: "Power BI" },

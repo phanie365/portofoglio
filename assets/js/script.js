@@ -185,7 +185,7 @@ if (projectDetail) {
         ${s.groups
           .map(
             (g) =>
-              `<div class="dscope__group"><span class="dicon">${icon(g.icon)}</span><div><h3>${escapeHtml(g.name)}</h3>${list(g.items)}</div></div>`
+              `<div class="dscope__group">${visual(g)}<div><h3>${escapeHtml(g.name)}</h3>${list(g.items)}</div></div>`
           )
           .join("")}
       </div>`,

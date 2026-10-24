@@ -1814,6 +1814,13 @@ a {
   border: 1px solid var(--line);
 }
 
+.dscope__group > img {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
 .dscope__group h3,
 .dcol h3 {
   margin: 0 0 0.5rem;
