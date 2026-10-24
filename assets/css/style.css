@@ -628,16 +628,13 @@ a {
 
 .page-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: stretch;
-  overflow: hidden;
-  background: var(--bg-light);
-  border-radius: 18px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
 }
 
 .page-head__text {
-  align-self: center;
-  padding: clamp(2rem, 5vw, 3.5rem);
+  padding-block: 1rem;
 }
 
 .page-head__title {
@@ -659,16 +656,8 @@ a {
 .page-head__photo {
   position: relative;
   margin: 0;
-  min-height: 320px;
-}
-
-.page-head__photo::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 30%;
-  background: linear-gradient(90deg, var(--bg-light), transparent);
-  z-index: 1;
+  height: clamp(300px, 48vh, 420px);
+  overflow: hidden;
 }
 
 .page-head__photo img {
@@ -681,10 +670,7 @@ a {
 }
 
 .track {
-  margin-top: 1.5rem;
-  padding: clamp(1.5rem, 3vw, 2.2rem) clamp(1.25rem, 3vw, 2.5rem) 0.5rem;
-  background: var(--bg-light);
-  border-radius: 18px;
+  margin-top: clamp(3.5rem, 7vw, 5rem);
 }
 
 .track__head {
@@ -860,17 +846,17 @@ a {
 }
 
 .chips span {
-  padding: 0.3rem 0.75rem;
-  background: var(--bg-soft);
-  border-radius: 6px;
-  font-size: 0.74rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 
 .missions {
   margin: 0 0 1.1rem;
-  padding: 1.1rem 1.3rem;
-  background: var(--bg);
-  border-radius: 10px;
+  padding: 0.2rem 0 0.2rem 1.3rem;
+  border-left: 1px solid var(--ink);
 }
 
 .missions h5 {
@@ -904,13 +890,8 @@ a {
     grid-template-columns: minmax(0, 1fr);
   }
   .page-head__photo {
-    min-height: 220px;
-  }
-  .page-head__photo::before {
-    inset: 0 0 auto 0;
-    width: auto;
-    height: 30%;
-    background: linear-gradient(180deg, var(--bg-light), transparent);
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
   .entry {
     grid-template-columns: minmax(0, 1fr);
@@ -918,9 +899,6 @@ a {
   }
   .entry__logo img {
     max-height: 48px;
-  }
-  .missions {
-    padding: 1rem;
   }
 }
 
