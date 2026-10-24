@@ -137,6 +137,13 @@ if (projectDetail) {
     hourglass: svg('<path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9s10 4 10 9"/>'),
     calendar: svg('<rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
     check: svg('<circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.5 2.5 4.5-5"/>'),
+    tick: svg('<path d="m5 12.5 4.5 4.5L19 7.5"/>'),
+    target: svg('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="m12 12 7-7M16 5h3v3"/>'),
+    bars: svg('<path d="M4 20h16"/><rect x="5.5" y="12" width="3" height="6"/><rect x="10.5" y="8" width="3" height="10"/><rect x="15.5" y="4" width="3" height="14"/>'),
+    phone: svg('<path d="M21 16.4v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 3.7 2 2 0 0 1 3.1 1.5h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.4a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>'),
+    search: svg('<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>'),
+    code: svg('<path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/>'),
+    alert: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5M12 16.5h.01"/>'),
   };
   const icon = (name) => ICONS[name] || "";
   const visual = (item) =>
@@ -153,21 +160,72 @@ if (projectDetail) {
     context: (s) => `
       <p class="dsec__text">${escapeHtml(s.text)}</p>
       <div class="flow">
-        <div class="flow__sources">
-          ${s.sources
-            .map(
-              (x) =>
-                `<div class="flow__node flow__node--row">${visual(x)}<div><strong>${escapeHtml(x.name)}</strong><small>${escapeHtml(x.note || "")}</small></div></div>`
-            )
-            .join("")}
-        </div>
+        ${
+          s.sources && s.sources.length
+            ? `<div class="flow__sources">${s.sources
+                .map(
+                  (x) =>
+                    `<div class="flow__node flow__node--row">${visual(x)}<div><strong>${escapeHtml(x.name)}</strong><small>${escapeHtml(x.note || "")}</small></div></div>`
+                )
+                .join("")}</div>`
+            : ""
+        }
         ${s.steps
           .map(
-            (x) =>
-              `${arrow}<div class="flow__node">${visual(x)}<strong>${escapeHtml(x.name)}</strong><small>${escapeHtml(x.note || "")}</small></div>`
+            (x, i) =>
+              `${i || (s.sources && s.sources.length) ? arrow : ""}<div class="flow__node">${visual(x)}<strong>${escapeHtml(x.name)}</strong><small>${escapeHtml(x.note || "")}</small></div>`
           )
           .join("")}
-      </div>`,
+      </div>
+      ${s.alert ? `<p class="dalert">${icon("alert")}<span>${escapeHtml(s.alert)}</span></p>` : ""}`,
+
+    pipeline: (s) => `
+      <p class="dsec__text">${escapeHtml(s.text)}</p>
+      <div class="pipe">
+        ${s.stages
+          .map(
+            (st, i) => `${i ? arrow : ""}
+          <div class="pipe__stage">
+            <p class="pipe__label">${escapeHtml(st.label)}${st.sublabel ? `<small>${escapeHtml(st.sublabel)}</small>` : ""}</p>
+            ${st.items
+              .map(
+                (x) =>
+                  `<div class="flow__node">${visual(x)}<strong>${escapeHtml(x.name)}</strong><small>${escapeHtml(x.note || "")}</small></div>`
+              )
+              .join("")}
+          </div>`
+          )
+          .join("")}
+      </div>
+      ${
+        s.extras && s.extras.length
+          ? `<div class="pipe__extras">${s.extras
+              .map(
+                (x) =>
+                  `<div class="pipe__extra"><span class="icon-circle icon-circle--lg">${icon(x.icon)}</span><div><strong>${escapeHtml(x.title)}</strong><small>${escapeHtml(x.text)}</small></div></div>`
+              )
+              .join("")}</div>`
+          : ""
+      }`,
+
+    status: (s) => `
+      <div class="dstatus">
+        ${s.items
+          .map(
+            (x) =>
+              `<div class="dstatus__item dstatus__item--${escapeHtml(x.tone || "neutral")}"><span class="icon-circle icon-circle--lg">${icon(x.icon)}</span><div><strong>${escapeHtml(x.title)}</strong>${
+                x.subtitle ? `<em>${escapeHtml(x.subtitle)}</em>` : ""
+              }<small>${escapeHtml(x.text)}</small></div></div>`
+          )
+          .join("")}
+      </div>
+      ${
+        s.benefits
+          ? `<div class="dbenefits"><span class="dicon">${icon(s.benefits.icon || "target")}</span><div><strong>${escapeHtml(s.benefits.title)}</strong>${list(
+              s.benefits.items
+            )}</div></div>`
+          : ""
+      }`,
 
     cards: (s) => `
       <div class="dcards">
@@ -180,7 +238,7 @@ if (projectDetail) {
       </div>`,
 
     scope: (s) => `
-      <p class="dsec__text">${escapeHtml(s.text)}</p>
+      ${s.text ? `<p class="dsec__text">${escapeHtml(s.text)}</p>` : ""}
       <div class="dscope">
         ${s.groups
           .map(
@@ -225,7 +283,12 @@ if (projectDetail) {
     columns: (s) => `
       <div class="dcols">
         ${s.items
-          .map((c, i) => `<div class="dcol"><h3><span>${projectNumber(i)}</span>${escapeHtml(c.title)}</h3>${list(c.items)}</div>`)
+          .map(
+            (c, i) =>
+              `<div class="dcol"><h3><span>${projectNumber(i)}</span>${escapeHtml(c.title)}</h3>${
+                c.icon ? `<span class="dcol__icon">${icon(c.icon)}</span>` : ""
+              }${list(c.items)}</div>`
+          )
           .join("")}
       </div>`,
 

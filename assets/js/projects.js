@@ -208,6 +208,193 @@ window.PROJECTS = [
     results: [],
     github: "",
     demo: "",
+    detail: {
+      company: "Edilians",
+      logo: "assets/img/logos/edilians.png",
+      period: "Oct. 2025 – En cours",
+      periodNote: "Alternance",
+      headline: "Des données d'appels brutes aux indicateurs métier fiables",
+      tagline: "Automatisation du reporting téléphonique — Prestataire COGIS",
+      intro:
+        "Conception et développement d'une solution de reporting automatisé pour analyser l'activité téléphonique d'EDILIANS, à partir des données fournies par COGIS. L'objectif était de reconstituer les règles de calcul des KPI, de centraliser les données courantes et historiques, et de fournir un tableau de bord fiable permettant un suivi détaillé des appels.",
+      sections: [
+        {
+          type: "context",
+          title: "Contexte métier",
+          text: "La prestation téléphonique d'EDILIANS était assurée par COGIS. Le responsable utilisait une interface COGIS pour exporter des statistiques d'appels au format PDF et produire des reportings dans Excel. Les rapports affichaient des indicateurs déjà calculés, mais les règles de gestion n'étaient pas suffisamment documentées.",
+          steps: [
+            { icon: "file", name: "Export PDF", note: "COGIS" },
+            { logo: "assets/img/logos/excel.svg", name: "Consolidation", note: "manuelle dans Excel" },
+          ],
+          alert: "Des indicateurs déjà calculés, mais sans documentation sur leurs règles de gestion.",
+        },
+        {
+          type: "context",
+          title: "Le défi : comprendre et reconstituer la logique derrière les chiffres",
+          text: "Avant d'automatiser le reporting, il a été nécessaire de comprendre comment les indicateurs étaient calculés. J'ai exploré les données PostgreSQL, formulé des hypothèses sur les statuts des appels et comparé mes calculs avec les rapports PDF de référence de COGIS afin de reconstituer les règles métier, en l'absence de documentation détaillée.",
+          steps: [
+            { icon: "file", name: "Analyse des rapports PDF COGIS", note: "Étude des indicateurs de référence" },
+            { icon: "database", name: "Exploration des données PostgreSQL", note: "Analyse SQL et formulation d'hypothèses" },
+            { icon: "search", name: "Comparaison des résultats", note: "Calculs manuels et itératifs pour valider les règles de gestion" },
+            { icon: "gear", name: "Implémentation des règles métier", note: "Intégration dans les modèles dbt (couche Silver)" },
+          ],
+        },
+        {
+          type: "cards",
+          title: "Objectifs du projet",
+          items: [
+            { icon: "target", title: "Fiabiliser", text: "les KPI en reconstituant leurs règles de calcul à partir des données brutes." },
+            { icon: "database", title: "Consolider", text: "les données courantes et historiques pour obtenir un ensemble cohérent de tickets d'appels." },
+            { icon: "gear", title: "Automatiser", text: "l'ingestion, la transformation et la restitution des données." },
+            { icon: "bars", title: "Analyser", text: "l'activité téléphonique par site, poste, collaborateur et tranche horaire." },
+          ],
+        },
+        {
+          type: "scope",
+          title: "Indicateurs analysés et axes d'analyse",
+          groups: [
+            {
+              icon: "phone",
+              name: "Principaux indicateurs",
+              items: [
+                "Nombre total d'appels",
+                "Appels entrants et sortants (selon leur origine)",
+                "Appels internes et externes",
+                "Appels pris, perdus, avec message",
+                "Appels transférés et directs",
+              ],
+            },
+            {
+              icon: "bars",
+              name: "Axes d'analyse",
+              items: ["Site", "Poste téléphonique", "Collaborateur (nom de la personne)", "Tranche horaire"],
+            },
+          ],
+        },
+        {
+          type: "pipeline",
+          title: "Architecture de la solution",
+          text: "Une chaîne complète d'ingestion, de transformation et de restitution des données d'appels.",
+          stages: [
+            {
+              label: "Sources COGIS",
+              items: [
+                { logo: "assets/img/logos/postgresql.svg", name: "PostgreSQL", note: "Données courantes (suppression après un délai)" },
+                { logo: "assets/img/logos/postgresql.svg", name: "PostgreSQL", note: "Données historiques (warehouse)" },
+              ],
+            },
+            {
+              label: "Ingestion",
+              items: [{ logo: "assets/img/logos/informatica.svg", name: "Informatica IICS", note: "Mappings d'extraction et d'ingestion, consolidation des données (UPSERT)" }],
+            },
+            {
+              label: "Stockage",
+              sublabel: "Données brutes",
+              items: [{ logo: "assets/img/logos/snowflake.svg", name: "Snowflake · Bronze", note: "Conservation des données brutes dans une structure fidèle à la source" }],
+            },
+            {
+              label: "Transformations",
+              sublabel: "Règles métier",
+              items: [{ logo: "assets/img/logos/dbt.svg", name: "dbt · Silver", note: "Nettoyage et application des règles métier reconstituées" }],
+            },
+            {
+              label: "Modèle décisionnel",
+              items: [{ logo: "assets/img/logos/dbt.svg", name: "dbt · Gold", note: "Tables de faits et dimensions (modèle en étoile)" }],
+            },
+            {
+              label: "Restitution",
+              items: [{ logo: "assets/img/logos/powerbi.svg", name: "Power BI", note: "Tableau de bord de suivi de l'activité téléphonique" }],
+            },
+          ],
+          extras: [
+            { icon: "clock", title: "Snowflake Tasks", text: "Planification des traitements (exécution quotidienne à 9 h)" },
+            { icon: "code", title: "Git / Azure DevOps", text: "Versionnement et mécanismes de livraison (intégration du dépôt Git avec Snowflake)" },
+          ],
+        },
+        {
+          type: "columns",
+          title: "Mes réalisations",
+          items: [
+            {
+              title: "Rétro-ingénierie des KPI",
+              icon: "file",
+              items: [
+                "Analyse SQL des données PostgreSQL.",
+                "Formulation d'hypothèses sur les statuts des appels.",
+                "Calculs manuels et comparaisons avec les rapports PDF COGIS.",
+                "Reconstitution des règles de gestion et implémentation dans dbt (Silver).",
+              ],
+            },
+            {
+              title: "Développement des pipelines",
+              icon: "gear",
+              items: [
+                "Création des mappings Informatica IICS.",
+                "Ingestion depuis PostgreSQL (données courantes et historiques).",
+                "Consolidation avec une logique d'UPSERT (INSERT/UPDATE) sur la base du compteur identifiant chaque ticket d'appel.",
+              ],
+            },
+            {
+              title: "Transformation et modélisation",
+              icon: "database",
+              items: [
+                "Modèles dbt dans Snowflake (couches Bronze, Silver et Gold).",
+                "Application des règles métier reconstituées.",
+                "Construction d'un modèle décisionnel en étoile (tables de faits et dimensions).",
+              ],
+            },
+            {
+              title: "Reporting et recette",
+              icon: "bars",
+              items: [
+                "Développement du tableau de bord Power BI.",
+                "Rédaction du cahier de tests.",
+                "Exécution des tests de recette en autonomie.",
+              ],
+            },
+          ],
+        },
+        {
+          type: "logos",
+          title: "Technologies utilisées",
+          items: [
+            { logo: "assets/img/logos/postgresql.svg", name: "PostgreSQL" },
+            { logo: "assets/img/logos/sql-line.svg", name: "SQL" },
+            { logo: "assets/img/logos/informatica.svg", name: "Informatica IICS" },
+            { logo: "assets/img/logos/snowflake.svg", name: "Snowflake" },
+            { logo: "assets/img/logos/dbt.svg", name: "dbt" },
+            { icon: "clock", name: "Snowflake Tasks" },
+            { logo: "assets/img/logos/powerbi.svg", name: "Power BI" },
+            { logo: "assets/img/logos/git.svg", name: "Git" },
+            { logo: "assets/img/logos/azuredevops.svg", name: "Azure DevOps" },
+          ],
+        },
+        {
+          type: "status",
+          title: "Résultats et statut du projet",
+          items: [
+            { icon: "code", title: "Développement réalisé de bout en bout", text: "Pipeline de données, modèles décisionnels et tableau de bord." },
+            { icon: "tick", tone: "ok", title: "Validation en recette", text: "Cahier de tests rédigé et tests exécutés." },
+            {
+              icon: "hourglass",
+              tone: "warn",
+              title: "Non mis en production",
+              subtitle: "à la fin de l'alternance",
+              text: "Une autre alternante devait reprendre le relais pour la suite.",
+            },
+          ],
+          benefits: {
+            title: "Bénéfices attendus (non mesurés en exploitation)",
+            items: [
+              "Automatisation du reporting.",
+              "Centralisation des données courantes et historiques.",
+              "Amélioration de la lisibilité et de la fiabilité des indicateurs.",
+              "Suivi détaillé de l'activité téléphonique par site, poste, collaborateur et tranche horaire.",
+            ],
+          },
+        },
+      ],
+    },
   },
   {
     id: "migration-sap-bo",
