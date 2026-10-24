@@ -929,9 +929,9 @@ a {
 /* ---------- Projects carousel ---------- */
 
 .projects-section {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: clamp(3.5rem, 7vw, 5rem) var(--gutter) 4rem;
+  background: var(--bg-light);
+  padding-block: clamp(3.5rem, 7vw, 5rem) clamp(4rem, 8vw, 5.5rem);
+  padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter)));
 }
 
 .projects-section__head {
@@ -1036,7 +1036,7 @@ a {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--bg-light);
+  background: #fffdfa;
   border: 1px solid var(--line);
   text-decoration: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
