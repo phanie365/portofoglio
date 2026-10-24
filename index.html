@@ -11,7 +11,7 @@
     href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/css/style.css?v=10" />
+  <link rel="stylesheet" href="assets/css/style.css?v=11" />
   <link rel="icon" href="data:," />
 </head>
 <body>
@@ -278,29 +278,48 @@
             <span class="entry__wordmark" style="color:#2E2A85" hidden>EDILIANS</span>
           </div>
           <div class="entry__body">
-            <h4>Data Engineer (Alternance)</h4>
+            <h4>Analytics Engineer / Data BI</h4>
             <p class="entry__meta">
               <span>EDILIANS</span>
-              <span class="entry__place"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Lyon, France</span>
+              <span class="entry__place"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Quincieux, France</span>
             </p>
             <p>
-              Conception et développement de solutions data pour fiabiliser, centraliser et valoriser
-              les données métiers. Mise en place de pipelines d'ingestion, modélisation et
-              visualisation des données.
+              Contribution à la modernisation progressive de la plateforme décisionnelle : transition de
+              Semarchy xDI / SQL Server / SAP BusinessObjects vers Informatica IICS / Snowflake / dbt /
+              Power BI.
             </p>
             <div class="missions">
-              <h5>Missions principales</h5>
+              <h5>Cybersécurité <span>· Centralisation et automatisation du reporting</span></h5>
               <ul>
-                <li>Concevoir et développer des pipelines d'ingestion de données depuis différentes sources (bases de données, fichiers, API) vers Snowflake.</li>
-                <li>Transformer et modéliser les données à l'aide de dbt en suivant une architecture en couches (bronze, silver, gold).</li>
-                <li>Automatiser les traitements et les orchestrer avec des outils de planification (ex : Airflow).</li>
-                <li>Développer des tableaux de bord et des analyses avec Power BI pour répondre aux besoins métiers.</li>
-                <li>Assurer la qualité, la traçabilité et la documentation des données.</li>
-                <li>Collaborer avec les équipes métiers pour comprendre leurs besoins et proposer des solutions adaptées.</li>
+                <li>Pour répondre au besoin d'une vision unifiée des vulnérabilités et de la protection des terminaux, automatisation de l'intégration des données CyberWatch et SentinelOne (EDR), auparavant consolidées manuellement depuis des exports Excel, PDF et XML.</li>
+                <li>Développement de pipelines ETL Semarchy xDI (API, intégration et transformation), stockage dans SQL Server, modélisation en étoile et restitution sous Power BI avec actualisation quotidienne. Reporting exploitable en <strong>30 minutes maximum</strong>, contre un processus manuel de <strong>1 à 2 semaines</strong>.</li>
+                <li>Modernisation engagée vers Informatica IICS / Snowflake : ingestion via API, mappings, chargements incrémentaux et orchestration par Taskflows ; architecture cible prévoyant dbt, migration non finalisée.</li>
+              </ul>
+            </div>
+            <div class="missions">
+              <h5>Téléphonie <span>· Industrialisation du reporting et des KPI métiers</span></h5>
+              <ul>
+                <li>Pour remplacer l'exploitation manuelle des rapports PDF du prestataire COGIS, exploration des données PostgreSQL et reconstitution en SQL des règles de calcul des KPI téléphoniques non documentées, validées par comparaison avec les rapports existants.</li>
+                <li>Conception de pipelines d'ingestion Informatica IICS → Snowflake, consolidation des données courantes et historiques par UPSERT, transformations dbt selon une architecture Bronze / Silver / Gold et modélisation dimensionnelle en étoile.</li>
+                <li>Développement du reporting Power BI (appels par site, collaborateur et créneau horaire), automatisation des traitements avec Snowflake Tasks, rédaction du cahier de tests et réalisation de la recette. Solution non encore déployée en production au terme de la mission.</li>
+              </ul>
+            </div>
+            <div class="missions">
+              <h5>Business Intelligence <span>· Migration SAP BusinessObjects vers Power BI</span></h5>
+              <ul>
+                <li>Migration de <strong>5 rapports métiers</strong> : Finance (2), Logistique (1), Production (1) et factures IT (1), dans le cadre de la modernisation du reporting décisionnel.</li>
+                <li>Analyse des modèles et requêtes SQL, préparation avec Power Query, mesures DAX et visualisations Power BI ; cahiers de tests et recettes réalisés avant mise en production par le manager.</li>
+              </ul>
+            </div>
+            <div class="missions">
+              <h5>Automatisation <span>· Contrôle des données et alertes</span></h5>
+              <ul>
+                <li>Modernisation des contrôles d'anomalies via n8n : workflows exécutant des requêtes SQL sur Oracle et SQL Server, transformations et conditions d'alerte.</li>
+                <li>Notifications automatiques par e-mail uniquement en cas d'anomalie ; tests fonctionnels réalisés avant mise en production par le manager.</li>
               </ul>
             </div>
             <div class="chips">
-              <span>Snowflake</span><span>dbt</span><span>Azure</span><span>Power BI</span><span>Python</span><span>SQL</span><span>Airflow</span>
+              <span>Semarchy xDI</span><span>Informatica IICS</span><span>PostgreSQL</span><span>SQL Server</span><span>Snowflake</span><span>dbt</span><span>Oracle</span><span>Power BI</span><span>SAP BusinessObjects</span><span>n8n</span><span>Git / Azure DevOps</span>
             </div>
           </div>
         </li>
@@ -349,6 +368,6 @@
     </section>
   </main>
 
-  <script src="assets/js/script.js?v=10"></script>
+  <script src="assets/js/script.js?v=11"></script>
 </body>
 </html>

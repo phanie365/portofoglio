@@ -865,7 +865,25 @@ a {
   border-left: 1px solid var(--ink);
 }
 
+.missions h5 span {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+
+.missions strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.missions + .missions {
+  margin-top: 1.4rem;
+}
+
 .missions h5 {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin: 0 0 0.5rem;
   font-size: 0.8rem;
   font-weight: 600;
