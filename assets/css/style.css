@@ -774,6 +774,12 @@ a {
   mix-blend-mode: multiply;
 }
 
+.entry__logo img.entry__logo--tile {
+  width: 64px;
+  height: 64px;
+  mix-blend-mode: normal;
+}
+
 .entry__wordmark {
   font-weight: 700;
   font-size: 1.3rem;
