@@ -338,9 +338,10 @@ a {
   border-left: 1px solid var(--line);
 }
 
-.stack svg {
+.stack img {
   width: 22px;
   height: 22px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
