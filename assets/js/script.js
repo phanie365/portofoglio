@@ -291,6 +291,7 @@ if (projectDetail) {
         <p class="dhead__tagline">${escapeHtml(d.tagline || "")}</p>
         <p class="dhead__intro">${escapeHtml(d.intro || "")}</p>
         ${links}
+        ${project.image ? `<figure class="dhead__cover"><img src="${escapeHtml(project.image)}" alt="" /></figure>` : ""}
       </header>
       ${d.sections.map(section).join("")}
       ${pager}`;

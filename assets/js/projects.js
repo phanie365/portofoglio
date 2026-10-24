@@ -28,7 +28,7 @@ window.PROJECTS = [
     title: "Cybersécurité",
     subtitle: "Automatisation du reporting et intégration de données",
     tags: ["Semarchy xDI", "SQL Server", "Power BI"],
-    image: "",
+    image: "assets/img/projects/cybersecurite.jpg",
     date: "",
     context: "",
     objectives: [],
