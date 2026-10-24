@@ -1,24 +1,62 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const navToggle = document.getElementById("navToggle");
-const navLinks = document.querySelector(".nav__links");
+const navLinks = document.getElementById("navLinks");
 
 navToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
+  const open = navLinks.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", String(open));
 });
 
 navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => navLinks.classList.remove("open"));
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  });
 });
 
-const heroRoles = document.querySelectorAll("#heroRoles li");
-if (heroRoles.length) {
-  let activeIndex = 0;
-  setInterval(() => {
-    heroRoles[activeIndex].classList.remove("is-active");
-    activeIndex = (activeIndex + 1) % heroRoles.length;
-    heroRoles[activeIndex].classList.add("is-active");
-  }, 2200);
+// Highlight the nav link of the section currently in view
+const navItems = [...navLinks.querySelectorAll("a")];
+const sections = navItems
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+const setActive = () => {
+  const offset = window.scrollY + window.innerHeight * 0.35;
+  let current = sections[0];
+  sections.forEach((section) => {
+    if (section.offsetTop <= offset) current = section;
+  });
+  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+    current = sections[sections.length - 1];
+  }
+  navItems.forEach((link) => {
+    link.classList.toggle("is-active", link.getAttribute("href") === `#${current.id}`);
+  });
+};
+
+window.addEventListener("scroll", setActive, { passive: true });
+setActive();
+
+// Fade sections in as they enter the viewport
+const revealTargets = document.querySelectorAll(".section, .project, .timeline li, .skill");
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  revealTargets.forEach((el) => {
+    el.classList.add("reveal");
+    observer.observe(el);
+  });
 }
 
 const projectModal = document.getElementById("projectModal");
@@ -44,6 +82,7 @@ if (projectModal) {
         span.textContent = tag;
         modalTags.appendChild(span);
       });
+    modalRepo.hidden = !card.dataset.repo;
     modalRepo.href = card.dataset.repo || "#";
 
     lastFocused = document.activeElement;
@@ -58,8 +97,8 @@ if (projectModal) {
     if (lastFocused) lastFocused.focus();
   };
 
-  document.querySelectorAll(".timeline__item .timeline__link").forEach((btn) => {
-    btn.addEventListener("click", () => openModal(btn.closest(".timeline__item")));
+  document.querySelectorAll(".project .project__link").forEach((btn) => {
+    btn.addEventListener("click", () => openModal(btn.closest(".project")));
   });
 
   projectModal.querySelectorAll("[data-modal-close]").forEach((el) => {
