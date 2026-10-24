@@ -11,7 +11,7 @@
     href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/css/style.css?v=12" />
+  <link rel="stylesheet" href="assets/css/style.css?v=13" />
   <link rel="icon" href="data:," />
 </head>
 <body>
@@ -377,8 +377,30 @@
       </ol>
     </section>
     </section>
+
+    <section id="projects" class="projects-section">
+      <div class="projects-section__head">
+        <div>
+          <p class="eyebrow">Mes projets</p>
+          <h2 class="projects-section__title">Des projets concrets,<br />des compétences réelles</h2>
+        </div>
+        <div class="projects-section__actions">
+          <a href="projets.html" class="link-arrow">Voir tous les projets <span aria-hidden="true">→</span></a>
+          <div class="carousel-nav">
+            <button type="button" class="round-btn" data-carousel="prev" aria-label="Projets précédents">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5"/><path d="m11 6-6 6 6 6"/></svg>
+            </button>
+            <button type="button" class="round-btn" data-carousel="next" aria-label="Projets suivants">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="carousel" id="projectsTrack" aria-label="Projets"></ul>
+    </section>
   </main>
 
-  <script src="assets/js/script.js?v=12"></script>
+  <script src="assets/js/projects.js?v=13"></script>
+  <script src="assets/js/script.js?v=13"></script>
 </body>
 </html>

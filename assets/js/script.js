@@ -62,53 +62,103 @@ if ("IntersectionObserver" in window) {
   });
 }
 
-const projectModal = document.getElementById("projectModal");
-if (projectModal) {
-  const modalTitle = document.getElementById("modalTitle");
-  const modalDate = document.getElementById("modalDate");
-  const modalDescription = document.getElementById("modalDescription");
-  const modalTags = document.getElementById("modalTags");
-  const modalRepo = document.getElementById("modalRepo");
-  let lastFocused = null;
+// ---------- Projects ----------
 
-  const openModal = (card) => {
-    modalTitle.textContent = card.dataset.title || "";
-    modalDate.textContent = card.dataset.date || "";
-    modalDescription.textContent = card.dataset.description || "";
-    modalTags.innerHTML = "";
-    (card.dataset.tags || "")
-      .split(",")
-      .map((tag) => tag.trim())
-      .filter(Boolean)
-      .forEach((tag) => {
-        const span = document.createElement("span");
-        span.textContent = tag;
-        modalTags.appendChild(span);
-      });
-    modalRepo.hidden = !card.dataset.repo;
-    modalRepo.href = card.dataset.repo || "#";
+const projects = window.PROJECTS || [];
 
-    lastFocused = document.activeElement;
-    projectModal.hidden = false;
-    document.body.style.overflow = "hidden";
-    projectModal.querySelector(".modal__close").focus();
+const escapeHtml = (value) =>
+  String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+const projectNumber = (index) => String(index + 1).padStart(2, "0");
+
+const arrowIcon =
+  '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>';
+
+const projectMedia = (project, index) =>
+  project.image
+    ? `<img src="${escapeHtml(project.image)}" alt="" loading="lazy" />`
+    : `<span class="pmedia__placeholder" aria-hidden="true">${projectNumber(index)}</span>`;
+
+const chips = (tags) =>
+  tags && tags.length ? `<div class="chips">${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>` : "";
+
+const projectCard = (project, index) => `
+  <li class="pcard">
+    <a href="projet.html?id=${encodeURIComponent(project.id)}" class="pcard__link">
+      <div class="pmedia">${projectMedia(project, index)}</div>
+      <div class="pcard__body">
+        <p class="pcard__meta"><span>${projectNumber(index)}</span>${escapeHtml(project.type || "À compléter")}</p>
+        <h3>${escapeHtml(project.title)}</h3>
+        <p class="pcard__sub">${escapeHtml(project.subtitle || "Description à venir")}</p>
+        ${chips(project.tags)}
+        <span class="round-btn round-btn--sm" aria-hidden="true">${arrowIcon}</span>
+      </div>
+    </a>
+  </li>`;
+
+const projectsTrack = document.getElementById("projectsTrack");
+if (projectsTrack) {
+  projectsTrack.innerHTML = projects.map(projectCard).join("");
+
+  const scrollByCard = (direction) => {
+    const card = projectsTrack.querySelector(".pcard");
+    const step = card ? card.getBoundingClientRect().width + 20 : projectsTrack.clientWidth;
+    projectsTrack.scrollBy({ left: direction * step, behavior: "smooth" });
   };
+  document.querySelector('[data-carousel="prev"]').addEventListener("click", () => scrollByCard(-1));
+  document.querySelector('[data-carousel="next"]').addEventListener("click", () => scrollByCard(1));
+}
 
-  const closeModal = () => {
-    projectModal.hidden = true;
-    document.body.style.overflow = "";
-    if (lastFocused) lastFocused.focus();
-  };
+const projectsGrid = document.getElementById("projectsGrid");
+if (projectsGrid) {
+  projectsGrid.innerHTML = projects.map(projectCard).join("");
+}
 
-  document.querySelectorAll(".project .project__link").forEach((btn) => {
-    btn.addEventListener("click", () => openModal(btn.closest(".project")));
-  });
+const projectDetail = document.getElementById("projectDetail");
+if (projectDetail) {
+  const id = new URLSearchParams(window.location.search).get("id");
+  const index = Math.max(0, projects.findIndex((p) => p.id === id));
+  const project = projects[index];
 
-  projectModal.querySelectorAll("[data-modal-close]").forEach((el) => {
-    el.addEventListener("click", closeModal);
-  });
+  const todo = '<p class="todo">À compléter</p>';
+  const list = (items) =>
+    items && items.length ? `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : todo;
+  const block = (title, content) => `
+    <section class="detail__block">
+      <h2>${title}</h2>
+      ${content}
+    </section>`;
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !projectModal.hidden) closeModal();
-  });
+  const prev = projects[(index - 1 + projects.length) % projects.length];
+  const next = projects[(index + 1) % projects.length];
+
+  document.title = `${project.title} | Glenne Poaty`;
+  projectDetail.innerHTML = `
+    <a href="index.html#projects" class="link-back"><span aria-hidden="true">←</span> Retour aux projets</a>
+    <header class="detail__head">
+      <div class="detail__intro">
+        <p class="pcard__meta"><span>${projectNumber(index)}</span>${escapeHtml(project.type || "À compléter")}${
+          project.date ? ` · ${escapeHtml(project.date)}` : ""
+        }</p>
+        <h1>${escapeHtml(project.title)}</h1>
+        <span class="about__rule" aria-hidden="true"></span>
+        <p class="detail__sub">${escapeHtml(project.subtitle || "Description à venir")}</p>
+        ${chips(project.tags)}
+        <div class="detail__links">
+          ${project.github ? `<a href="${escapeHtml(project.github)}" target="_blank" rel="noopener" class="btn btn--dark btn--small">Voir le code sur GitHub ${arrowIcon}</a>` : ""}
+          ${project.demo ? `<a href="${escapeHtml(project.demo)}" target="_blank" rel="noopener" class="link-arrow">Voir la démo <span aria-hidden="true">→</span></a>` : ""}
+        </div>
+      </div>
+      <div class="pmedia pmedia--large">${projectMedia(project, index)}</div>
+    </header>
+    <div class="detail__grid">
+      ${block("Contexte", project.context ? `<p>${escapeHtml(project.context)}</p>` : todo)}
+      ${block("Objectifs", list(project.objectives))}
+      ${block("Démarche &amp; architecture", list(project.approach))}
+      ${block("Résultats", list(project.results))}
+    </div>
+    <nav class="detail__pager" aria-label="Autres projets">
+      <a href="projet.html?id=${encodeURIComponent(prev.id)}"><small>← Projet précédent</small>${escapeHtml(prev.title)}</a>
+      <a href="projet.html?id=${encodeURIComponent(next.id)}" class="detail__pager-next"><small>Projet suivant →</small>${escapeHtml(next.title)}</a>
+    </nav>`;
 }
