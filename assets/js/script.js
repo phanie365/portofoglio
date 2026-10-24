@@ -17,12 +17,15 @@ navLinks.querySelectorAll("a").forEach((link) => {
 });
 
 // Highlight the nav link of the section currently in view
-const navItems = [...navLinks.querySelectorAll("a")];
+const navItems = [...navLinks.querySelectorAll("a")].filter((link) =>
+  link.getAttribute("href").startsWith("#")
+);
 const sections = navItems
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
 
 const setActive = () => {
+  if (!sections.length) return;
   const offset = window.scrollY + window.innerHeight * 0.35;
   let current = sections[0];
   sections.forEach((section) => {
